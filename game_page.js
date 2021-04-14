@@ -41,3 +41,48 @@ function send() {
     document.getElementById("output").innerHTML = row;
     document.getElementById("word").value = "";
 }
+
+var question_turn = "player1";
+var answer_turn = "player2";
+
+function check() {
+    get_answer = document.getElementById("input_checkbox").value;
+    answer = get_answer.toLowerCase();
+    console.log("answer to lowercase : " + answer);
+
+    if(answer == word) {
+        if(answer_turn == "player1") {
+            player1_score = player1_score + 1;
+            document.getElementById("player1_score").innerHTML = player1_score;
+            console.log("Player 1 Score : " + player1_score);
+        }
+
+        else {
+            player2_score = player2_score + 1;
+            document.getElementById("player2_score").innerHTML = player2_score;
+            console.log("Player 2 Score : " + player2_score);
+        }
+    }
+
+    if(question_turn == "player1") {
+        question_turn = "player2";
+        document.getElementById("playerQuestion").innerHTML = "Player Question : " + player2;
+    }
+
+    else {
+        question_turn = "player1";
+        document.getElementById("playerQuestion").innerHTML = "Player Question : " + player1;
+    }
+
+    if(answer_turn == "player1") {
+        answer_turn = "player2";
+        document.getElementById("playerAnswer").innerHTML = "Player Answer : " + player2;
+    }
+
+    else {
+        answer_turn = "player1";
+        document.getElementById("playerAnswer").innerHTML = "Player Answer : " + player1;
+    }
+
+    document.getElementById("output").innerHTML = "";
+}
